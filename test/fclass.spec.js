@@ -6,20 +6,20 @@ describe('fclass', () => {
         this.age = age;
       },
       privates: {
-        name: ''
+        privA: 'privA'
       },
       protects: {
-        age: ''
+        protA: 'protA'
       },
       publics: {
         sex: 'female',
         say: function() {
-          return (this.name + ":" + this.age + ":" + this.sex);
+          return (this.privA + ":" + this.protA + ":" + this.name + ":" + this.age + ":" + this.sex);
         }
       }
     });
     var a = new A("lili", 18);
-    expect(a.say).toBe('lili:18:female');
+    expect(a.say()).toBe('privA:protA:lili:18:female');
     done();
   })
 });

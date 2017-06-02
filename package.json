@@ -22,8 +22,5 @@
   "bugs": {
     "url": "https://github.com/ccyingfu/fclass/issues"
   },
-  "homepage": "https://github.com/ccyingfu/fclass#readme",
-  "dependencies": {
-    "vue": "^2.3.3"
-  }
+  "homepage": "https://github.com/ccyingfu/fclass#readme"
 }
