@@ -1,0 +1,29 @@
+{
+  "name": "fclass",
+  "version": "1.0.0",
+  "description": "A Object Oriented Lib of JavaScript",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ccyingfu/fclass.git"
+  },
+  "keywords": [
+    "Object",
+    "Oriented"
+  ],
+  "author": "liyingfu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ccyingfu/fclass/issues"
+  },
+  "homepage": "https://github.com/ccyingfu/fclass#readme",
+  "dependencies": {
+    "vue": "^2.3.3"
+  }
+}
