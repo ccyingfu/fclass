@@ -36,7 +36,7 @@
         });
       });
       publics && Object.keys(publics).forEach(function(key) {
-        let property = protects[key];
+        let property = publics[key];
         clazz.prototype[key] = property;
       });
     }
