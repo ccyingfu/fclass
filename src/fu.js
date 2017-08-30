@@ -5,7 +5,7 @@
 (function(global, factory) {
   typeof exports === 'object' && module !== undefined ? module.exports = factory() :
     typeof define === 'function' && define.amd ? define(factory) :
-    (global.fclass = factory());
+    (global.fu = factory());
 })(this, function() {
   var fclass = {};
   var classes = {};

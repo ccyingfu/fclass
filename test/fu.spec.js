@@ -1,6 +1,6 @@
 describe('fclass', () => {
   it('create a object', done => {
-    var Person = fclass.define('Person', {
+    var Person = fu.define('Person', {
       init: function(config) {
         this.name = config.name;
         this.age = config.age;

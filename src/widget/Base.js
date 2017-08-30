@@ -1,0 +1,3 @@
+fu.define("Base", {
+
+});
