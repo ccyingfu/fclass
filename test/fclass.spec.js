@@ -1,9 +1,9 @@
 describe('fclass', () => {
   it('create a object', done => {
-    var A = fclass.create('A', {
-      init: function(name, age) {
-        this.name = name;
-        this.age = age;
+    var Person = fclass.define('Person', {
+      init: function(config) {
+        this.name = config.name;
+        this.age = config.age;
       },
       privates: {
         privA: 'privA'
@@ -18,7 +18,7 @@ describe('fclass', () => {
         }
       }
     });
-    var a = new A("lili", 18);
+    var person = new Person({ name: "lili", age: 18 });
     expect(a.say()).toBe('privA:protA:lili:18:female');
     done();
   })
