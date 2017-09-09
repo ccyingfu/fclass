@@ -115,6 +115,7 @@
     var privates = options.privates || {};
     var protects = options.protects || {};
     var publics = options.publics || {};
+    var statics = options.statics || {};
     var config = options.config || {};
 
     var t, m, proto; // 构造函数，处理 mixins 的中间变量，原型
@@ -142,23 +143,22 @@
     }
 
     if (!classes[name]) {
-      t = function(setting) {
-        this.config = $extend(this.config, setting);
-        this.init(this.config);
+      t = function() {
+        this.init.apply(this, Array.prototype.slice.call(arguments, 0));
       };
       if (ext) {
-        t.prototype = new ext();
+        var superInstance = new ext();
+        t.prototype = superInstance;
         // $super 指向父类
-        setProperty(t.prototype, "$super", ext, "privates");
+        setProperty(t, "$super", superInstance.init, "privates");
       }
       proto = t.prototype;
-      // 合并配置
-      proto.config = $extend(proto.config, config, true);
       // 构造函数
       setProperty(proto, "init", function() {
         var self = this;
+        var args = arguments;
         initials.forEach(function(init) {
-          init.apply(self, [self.config]);
+          init.apply(self, args);
         });
       }, "protects");
       // 私有方法和属性
@@ -173,16 +173,15 @@
       publics && Object.keys(publics).forEach(function(key) {
         proto[key] = publics[key];
       });
+      // 常量部分
+      statics && Object.keys(statics).forEach(function(key) {
+        setProperty(t, key, statics[key], "protects");
+      });
       // 插件方法覆盖
       Object.keys(mixinCompilation).forEach(function(key) {
-        var value = mixinCompilation[key];
-        if (key == "config") {
-          proto.config = $extend(proto.config, value, true);
-        } else {
-          proto[key] = value;
-        }
+        proto[key] = mixinCompilation[key];
       });
-      t.prototype.construcotr = t;
+      t.prototype.constructor = t;
       t.className = name;
       classes[name] = t;
     } else {
@@ -200,8 +199,15 @@
     return noop;
   }
 
+  function create(name, opts) {
+    var clazz = find(name);
+    var cn = clazz.className;
+    return cn ? clazz : defineClass(name, opts);
+  }
+
   setProperty(fclass, "define", defineClass, "protects");
   setProperty(fclass, "find", find, "protects");
+  setProperty(fclass, "create", create, "protects");
 
   fclass.isDate = isDate;
   fclass.isArray = isArray;

@@ -1,61 +1,40 @@
-var A = fclass.define("A", {
-  init: function(config) {
-    console.log("A init");
-    console.log(config.name, config.age);
-    this.name = config.name;
+var Person = fu.define("Person", {
+  init: function(name, age) {
+    this.name = name;
+    this.age = age;
   },
-  config: {
-    name: "lili",
-    age: 20
+  statics: {
+    CONST: "CONST"
   },
   privates: {
-    priAttr: "priAttr"
+    mode: "privates"
   },
   protects: {
-    protoAttr: "protoAttr"
+    attr: "protects"
   },
   publics: {
-    name: "",
     say: function() {
-      console.log(this.priAttr + ":" + this.protoAttr);
+      return "I am " + this.name + ". I am " + this.age + " old.";
     }
   }
 });
 
-var B = fclass.define("B", {
-  extend: "A",
-  config: {
-    sex: "girl"
-  },
-  init: function(config) {
-    console.log("B init");
-    console.log(config.name, config.age, config.sex);
+var Teacher = fu.define("Teacher", {
+  extend: "Person",
+  init: function(school) {
+    Teacher.$super.apply(this, ["a Teacher", 29]);
+    this.school = school;
   },
   publics: {
-    getName: function() {
-      return this.name;
+    say1: function() {
+      return "I am " + this.name + " in the " + this.school + " school. I am " + this.age + " old.";
     }
   }
 });
 
-fclass.define("MC1", {
-  init: function(config) {
-    this.name = "MC1";
-  },
-  privates: {
-    priAttr: "MC1 priAttr"
-  },
-  publics: {
-    getPriAttr: function() {
-      return this.priAttr;
-    },
-    say: function() {
-      console.log(this.name, this.priAttr);
-    }
+var AssEss = fu.define("AssEss", {
+  extend: "Teacher",
+  init: function() {
+    AssEss.$super.apply(this, ["莅临中学"]);
   }
-});
-
-var C = fclass.define("C", {
-  extend: "B",
-  mixins: ["MC1"]
 });
