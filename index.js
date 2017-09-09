@@ -35,6 +35,6 @@ var Teacher = fu.define("Teacher", {
 var AssEss = fu.define("AssEss", {
   extend: "Teacher",
   init: function() {
-    AssEss.$super.apply(this, ["莅临中学"]);
+    AssEss.$super.apply(this, ["深大附中"]);
   }
 });
