@@ -1,17 +1,22 @@
 describe('fclass', function() {
   var Person, Teacher, AssEss;
   beforeEach(function() {
+    // 通过 fu.define 来定义一个类
     Person = fu.define("Person", {
+      // 当执行 new Person 的时候首先执行 init 方法
       init: function(name, age) {
         this.name = name;
         this.age = age;
       },
+      // 静态属性，通过 Perosn.CONST 访问
       statics: {
         CONST: "CONST"
       },
+      // 可以访问，但无法通过 Object.keys 或 for in 得到，无法被继承
       privates: {
         mode: "privates"
       },
+      // 无法被 delete 掉
       protects: {
         attr: "protects"
       },
@@ -23,7 +28,9 @@ describe('fclass', function() {
     });
 
     Teacher = fu.define("Teacher", {
+      // 继承 Person，只能单继承
       extend: "Person",
+      // 如果有需要，请先执行父类的 init 方法。$super 指向 init 
       init: function(school) {
         Teacher.$super.apply(this, ["a Teacher", 29]);
         this.school = school;
