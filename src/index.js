@@ -2,6 +2,7 @@
   "use strict";
   var modules = [
     "fu.js",
+    "commons/Html.js",
     "commons/Event.js",
     "commons/Array.js",
     "widget/Base.js"

@@ -38,3 +38,14 @@ var AssEss = fu.define("AssEss", {
     AssEss.$super.apply(this, ["深大附中"]);
   }
 });
+
+var div = fu.$().create("div");
+var div2 = fu.$().create("div");
+var div3 = fu.$().create("div");
+fu.$("body").append(div).append(div2);
+div2.append(div3);
+fu.$("div").css({
+  margin: "20px",
+  background: "#ccc",
+  height: "20px"
+})

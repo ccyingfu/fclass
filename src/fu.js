@@ -52,7 +52,7 @@
 
   var OBJ_TYPE = {
     "[object String]": "string",
-    "[object Object]": "number",
+    "[object Object]": "object",
     "[object Array]": "array",
     "[object RegExp]": "regexp",
     "[object Date]": "date",
@@ -212,6 +212,7 @@
   fclass.isDate = isDate;
   fclass.isArray = isArray;
   fclass.extend = $extend;
+  fclass.type = getType;
 
   return fclass;
 });
