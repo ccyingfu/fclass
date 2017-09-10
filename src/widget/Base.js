@@ -1,4 +1,5 @@
-fu.define("Base", {
+var fu = require("../fu");
+module.exports = fu.define("Base", {
   init: function(setting) {
 
   },

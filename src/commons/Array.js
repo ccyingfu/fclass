@@ -1,4 +1,5 @@
-fu.define("PowerArray", {
+var fu = require("../fu");
+module.exports = fu.define("PowerArray", {
   statics: {
     toArray: function(array) {
       return fu.extend(array || [], {

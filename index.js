@@ -39,9 +39,9 @@ var AssEss = fu.define("AssEss", {
   }
 });
 
-var div = fu.$().create("div");
-var div2 = fu.$().create("div");
-var div3 = fu.$().create("div");
+var div = fu.$.create("div");
+var div2 = fu.$.create("div");
+var div3 = fu.$.create("div");
 fu.$("body").append(div).append(div2);
 div2.append(div3);
 fu.$("div").css({

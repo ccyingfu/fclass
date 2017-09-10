@@ -1,4 +1,5 @@
-fu.define("Event", {
+var fu = require("../fu");
+module.exports = fu.define("Event", {
   protects: {
     _evs_events: {},
     $on: function(name, handler) {
