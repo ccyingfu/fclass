@@ -11,7 +11,8 @@
   var classes = {};
   var mixins = {};
   var TIPS = {
-    CLASS_NOT_FOUND: "class ${0} not found."
+    CLASS_NOT_FOUND: "class ${0} not found.",
+    CLASS_DEFINED: "这个类已经被定义过啦。"
   };
 
   var parseTips = function(tips, ins) {
@@ -147,10 +148,16 @@
         this.init.apply(this, Array.prototype.slice.call(arguments, 0));
       };
       if (ext) {
-        var superInstance = new ext();
-        t.prototype = superInstance;
-        // $super 指向父类
-        setProperty(t, "$super", superInstance.init, "privates");
+        var superInit = ext.prototype.init;
+        var superProto = {};
+        Object.keys(ext.prototype).forEach(function(key) {
+          if (key != "init") {
+            superProto[key] = ext.prototype[key];
+          }
+        });
+        t.prototype = superProto;
+        // $super 指向父类初始化方法
+        setProperty(t, "$super", superInit, "privates");
       }
       proto = t.prototype;
       // 构造函数
@@ -185,6 +192,7 @@
       t.className = name;
       classes[name] = t;
     } else {
+      // console.warn(TIPS.CLASS_DEFINED);
       t = classes[name];
     }
     return t;

@@ -79,4 +79,38 @@ describe('fclass', function() {
     var assess = new AssEss();
     expect(assess.say1()).toBe("I am a Teacher in the 荔林中学 school. I am 29 years old.")
   });
+
+  it("mixins", function() {
+    fu.define("Setting", {
+      protects: {
+        setting: {},
+        parseSetting: function(setting) {
+          this.setting = setting;
+        }
+      }
+    });
+
+    fu.define("BaseConsole", {
+      mixins: ["Setting"],
+      init: function(setting) {
+        this.parseSetting(setting);
+      }
+    });
+
+    var Console = fu.define("Console", {
+      extend: "BaseConsole",
+      init: function(setting) {
+        Console.$super.apply(this, [setting]);
+      },
+      publics: {
+        console: function(msg) {
+          return this.setting.test + " " + msg;
+        }
+      }
+    });
+
+    var consl = new Console({ test: "hello" });
+    expect(consl.console("world")).toBe("hello world");
+  });
+
 });
