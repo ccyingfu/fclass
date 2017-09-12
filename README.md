@@ -1,5 +1,5 @@
 # fu
-这是一个为 JavaScript 设计的面向对象的一个库。
+这是一个为 JavaScript 设计的面向对象的一个库。(只是练手用，可能有各种未知bug，请勿用于生产环境。)
 # Usage
 通过 fu.define 来定义一个类。
 

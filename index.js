@@ -52,6 +52,7 @@ fu.$("div").css({
 
 var Input = fu.find("Input");
 var ipt = new Input({
-  type: "search"
+  type: "search",
+  placeholder: "请输入..."
 });
 ipt.render();

@@ -3,6 +3,7 @@ define([
   "./commons/Array",
   "./commons/Event",
   "./commons/Html",
+  "./widget/mixins/Setting",
   "./widget/Base",
   "./widget/Input"
 ], function(fu) {
