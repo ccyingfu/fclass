@@ -33,6 +33,13 @@ html.prototype = {
     return this;
   },
 
+  html: function(txt) {
+    this.dom.forEach(function(d) {
+      d.innerHTML = txt;
+    });
+    return this;
+  },
+
   attr: function(key, attr) {
     this.dom.forEach(function(d) {
       d.setAttribute(key, attr);

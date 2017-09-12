@@ -48,4 +48,10 @@ fu.$("div").css({
   margin: "20px",
   background: "#ccc",
   height: "20px"
-})
+});
+
+var Input = fu.find("Input");
+var ipt = new Input({
+  type: "text"
+});
+ipt.render();
