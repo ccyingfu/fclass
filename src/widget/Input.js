@@ -6,7 +6,7 @@ var Input = fu.define("Input", {
   },
   protects: {
     render: function() {
-      this.template = "<input type=" + this.setting.type + "/>";
+      this.template = "<input type='" + this.setting.type + "'/>";
       this.handleTmpl(this.template);
       this.bind();
     },

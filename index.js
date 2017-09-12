@@ -52,6 +52,6 @@ fu.$("div").css({
 
 var Input = fu.find("Input");
 var ipt = new Input({
-  type: "text"
+  type: "search"
 });
 ipt.render();
